@@ -1,0 +1,57 @@
+{
+    "name": "tripteki/laravelphp-log",
+    "version": "1.0.0",
+    "description": "Trip Teknologi's Laravel.php Logs",
+
+    "readme": "README.md",
+    "license": "MIT",
+    "authors": [ { "name": "Trip Teknologi", "email": "tripteki.company@gmail.com" } ],
+    "homepage": "https://github.com/tripteki/laravelphp-log",
+    "support": { "issues": "https://github.com/tripteki/laravelphp-log/issues" },
+
+    "require": {
+
+        "php": "^8.0.2",
+
+        "tripteki/laravelphp-repository": "^1.0.0",
+        "tripteki/laravelphp-helpers": "^1.0.0",
+        "tripteki/laravelphp-adminer": "^1.0.0",
+        "tripteki/laravelphp-import-export": "^1.0.0",
+        "tripteki/laravelphp-request-response-query": "^1.0.0",
+
+        "spatie/laravel-activitylog": "^4.7.2"
+    },
+
+    "require-dev": {},
+
+    "suggest": {
+
+        "laravel/lumen-framework": "Required when using lumen framework (^9.0).",
+        "laravel/framework": "Required when using laravel framework (^9.0)."
+    },
+
+    "autoload": {
+
+        "psr-4": {
+
+            "Tripteki\\Log\\": "src/"
+        }
+    },
+
+    "autoload-dev": {},
+
+    "extra": {
+
+        "laravel": {
+
+            "dont-discover": [],
+
+            "providers": [
+
+                "Tripteki\\Log\\Providers\\LogServiceProvider"
+            ],
+
+            "aliases": []
+        }
+    }
+}
