@@ -8,7 +8,7 @@ Getting Started
 Installation :
 
 ```
-$ composer require tripteki/laravelphp-log
+composer require tripteki/laravelphp-log
 ```
 
 How to use it :
@@ -34,7 +34,7 @@ php artisan vendor:publish --tag=tripteki-laravelphp-log-migrations
 - Migrate.
 
 ```
-$ php artisan migrate
+php artisan migrate
 ```
 
 - Publish tests file into your project's directory with running (optionally) :
