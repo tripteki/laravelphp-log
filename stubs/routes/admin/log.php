@@ -9,4 +9,5 @@ Route::prefix(config("adminer.route.admin"))->middleware(config("adminer.middlew
      * Logs.
      */
     Route::apiResource("logs", LogAdminController::class)->only([ "index", "show", ])->parameters([ "logs" => "log", ]);
+    Route::get("logs-export", [ LogAdminController::class, "export", ]);
 });

@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin\Log;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Maatwebsite\Excel\Facades\Excel;
 use Tripteki\Log\Contracts\Repository\Admin\ILogRepository;
+use App\Exports\Logs\LogExport;
 use App\Http\Requests\Admin\Logs\LogShowValidation;
+use Tripteki\Helpers\Http\Requests\FileExportValidation;
 use Tripteki\Helpers\Http\Controllers\Controller;
 
 class LogAdminController extends Controller
@@ -107,5 +110,52 @@ class LogAdminController extends Controller
         $data = $this->logAdminRepository->get($log);
 
         return iresponse($data, $statecode);
+    }
+
+    /**
+     * @OA\Get(
+     *      path="/admin/logs-export",
+     *      tags={"Admin Log"},
+     *      summary="Export",
+     *      @OA\Parameter(
+     *          required=false,
+     *          in="query",
+     *          name="file",
+     *          schema={"type": "string", "enum": {"csv", "xls", "xlsx"}},
+     *          description="Log's File."
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Success."
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity."
+     *      )
+     * )
+     *
+     * @param \Tripteki\Helpers\Http\Requests\FileExportValidation $request
+     * @return mixed
+     */
+    public function export(FileExportValidation $request)
+    {
+        $form = $request->validated();
+        $data = [];
+        $statecode = 200;
+
+        if ($form["file"] == "csv") {
+
+            $data = Excel::download(new LogExport(), "Log.csv", \Maatwebsite\Excel\Excel::CSV);
+
+        } else if ($form["file"] == "xls") {
+
+            $data = Excel::download(new LogExport(), "Log.xls", \Maatwebsite\Excel\Excel::XLS);
+
+        } else if ($form["file"] == "xlsx") {
+
+            $data = Excel::download(new LogExport(), "Log.xlsx", \Maatwebsite\Excel\Excel::XLSX);
+        }
+
+        return $data;
     }
 };
