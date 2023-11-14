@@ -2,15 +2,10 @@
 
 namespace Tripteki\Log\Providers;
 
-use Tripteki\Log\Events\Logs\Update;
-use Tripteki\Log\Events\Logs\Any;
-use Tripteki\Log\Listeners\Logs\UpdateListener;
-use Tripteki\Log\Listeners\Logs\AnyListener;
 use Tripteki\Log\Models\Admin\Log;
 use Tripteki\Uid\Observers\UniqueIdObserver;
 use Tripteki\Log\Console\Commands\InstallCommand;
 use Tripteki\Repository\Providers\RepositoryServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class LogServiceProvider extends ServiceProvider
 {
@@ -174,8 +169,5 @@ class LogServiceProvider extends ServiceProvider
     public function dataEventListener()
     {
         Log::observe(UniqueIdObserver::class);
-
-        Event::listen(Update::class, [ UpdateListener::class, "handle", ]);
-        Event::listen(Any::class, [ AnyListener::class, "handle", ]);
     }
 };

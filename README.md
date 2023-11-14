@@ -37,12 +37,6 @@ php artisan vendor:publish --tag=tripteki-laravelphp-log-migrations
 $ php artisan migrate
 ```
 
-- Emit Event-Listener.
-
-```
-php artisan queue:work
-```
-
 - Publish tests file into your project's directory with running (optionally) :
 
 ```
