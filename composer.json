@@ -1,6 +1,6 @@
 {
     "name": "tripteki/laravelphp-log",
-    "version": "1.1.8",
+    "version": "1.1.10",
     "description": "Trip Teknologi's Laravel.php Logs",
 
     "readme": "README.md",
@@ -19,7 +19,7 @@
         "tripteki/laravelphp-import-export": "^1.0.0",
         "tripteki/laravelphp-request-response-query": "^1.0.0",
 
-        "spatie/laravel-activitylog": "^4.7.2"
+        "spatie/laravel-activitylog": "^4.8.0"
     },
 
     "require-dev": {},
